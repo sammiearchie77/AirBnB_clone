@@ -12,6 +12,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
+
 def parse(arg):
     curly_braces = re.search(r"/{(.*?)\}", arg)
     brackets = re.search(r"\[(.*?)\]", arg)
@@ -29,6 +30,7 @@ def parse(arg):
         retl = [i.strip(",") for i in lexer]
         retl.append(curly_braces.group())
         return retl
+
 
 class HBNBCommand(cmd.Cmd):
     """ Defines the HolbertonBnB command interpreter.
@@ -51,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
         """ Do nothing when receiving an empty line. """
         pass
 
-    def default(self,arg):
+    def default(self, arg):
         """ Default behaviour for cmd module when input is invalid. """
         argdict = {
                 "all": self.do_all,
@@ -93,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         elif argl[0] not in HBNBCommand.__classes:
             print("** class does not exist **")
         else:
-            print(eval([argl[0])().id))
+            print(eval(argl[0])().id)
             storage.save()
 
     def do_show(self, arg):
@@ -149,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
                     obj1.append(obj.__str__())
                 elif len(argl) == 0:
                     obj1.append(obj.__str__())
-           print(obj1)
+        print(obj1)
 
     def do_count(self, arg):
         """ Usage: count <class> <id> <attribute_name> <attribute_value> or
@@ -189,16 +191,16 @@ class HBNBCommand(cmd.Cmd):
                 obj.__dict__[argl[2]] = valtype(argl[3])
             else:
                 obj.__dict__[argl[2]] = argl[3]
-       elif type(eval(argl[2])) == dict:
+        elif type(eval(argl[2])) == dict:
            obj = objdict["{}.{}".format(argl[0], arg[1])]
            for k, v in eval(argl[2]).items():
                if (k in obj.__class__.__dict__.keys() and 
-                       type(obj.__class__.__dict__[k]) in {str, int, float})
+                       type(obj.__class__.__dict__[k]) in {str, int, float}):
                     valtype = type(obj.__class__.__dict__[k])
                     obj.__dict__[k] = valtype(v)
                else:
                    obj.__dict__[k] = v
-       storage.save()
+        storage.save()
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
