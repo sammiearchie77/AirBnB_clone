@@ -1,5 +1,5 @@
 # AirBnB clone - The console
- <img src="img/hbnb_screenshot.png" alt="cover" />
+ <img src="https://raw.githubusercontent.com/nickssilver/AirBnB_clone/main/img/hbnb_screenshot.png" alt="cover" />
 
 ## Description
 
@@ -69,5 +69,5 @@ The test for the classes are in the [test_models](./tests/test_models/) folder.
 
 - **Brayan Imbayi** - [khabeko@outlook.com](https://github.com/khabeko) ~ [@brayanimbayi](https://twitter.com/brayanimbayi):
 
-<img align="center" src="img/unnamed.png" alt="footer" width="150"  height="150"/>
+<img align="center" src="https://raw.githubusercontent.com/nickssilver/AirBnB_clone/main/img/unnamed.png" alt="footer" width="150"  height="150"/>
 
