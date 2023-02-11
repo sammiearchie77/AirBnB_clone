@@ -4,7 +4,7 @@ Unittest classes:
     TestHBNBCommand_prompting
     TestHBNBCommand_help
     TestHBNBCommand_exit
-    TestHBNBComand_create
+    TestHBNBCommand_create
     TestHBNBCommand_show
     TestHBNBCommand_all
     TestHBNBCommand_destroy
@@ -25,11 +25,12 @@ class TestHBNBCommand_prompting(unittest.TestCase):
 
     def test_prompt_string(self):
         self.assertEqual("(hbnb) ", HBNBCommand.prompt)
-    
+
     def test_empty_line(self):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommand().onecmd(""))
             self.assertEqual("", output.getvalue().strip())
+
 
 class TestHBNBCommand_help(unittest.TestCase):
     """Unittests for testing help messages of the HBNB command interpreter."""
@@ -41,8 +42,8 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertEqual(h, output.getvalue().strip())
 
     def test_help_create(self):
-        h = ("Usage: create <class>\n     "
-                "Create a new class instance and print its id.")
+        h = ("Usage: create <class>\n        "
+             "Create a new class instance and print its id.")
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommand().onecmd("help create"))
             self.assertEqual(h, output.getvalue().strip())
@@ -54,21 +55,21 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertEqual(h, output.getvalue().strip())
 
     def test_help_show(self):
-        h = ("Usage: show <class> <id> or <class>.show(<id>)\n      "
-                "Display the string representation of a class instance of"
-                "a given id".)
+        h = ("Usage: show <class> <id> or <class>.show(<id>)\n        "
+             "Display the string representation of a class instance of"
+             " a given id.")
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommand().onecmd("help show"))
             self.assertEqual(h, output.getvalue().strip())
 
     def test_help_destroy(self):
-        h = ("Usage: destroy <class> <id> or <class>.destroy(<id>)\n      "
-                "Delete a class instance of given id.")
+        h = ("Usage: destroy <class> <id> or <class>.destroy(<id>)\n        "
+             "Delete a class instance of a given id.")
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommand().onecmd("help destroy"))
             self.assertEqual(h, output.getvalue().strip())
 
-     def test_help_all(self):
+    def test_help_all(self):
         h = ("Usage: all or all <class> or <class>.all()\n        "
              "Display string representations of all instances of a given class"
              ".\n        If no class is specified, displays all instantiated "
@@ -102,16 +103,18 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertFalse(HBNBCommand().onecmd("help"))
             self.assertEqual(h, output.getvalue().strip())
 
+
 class TestHBNBCommand_exit(unittest.TestCase):
-    """Unittests for testing exiting from the HBNB command interpreter. """
+    """Unittests for testing exiting from the HBNB command interpreter."""
 
     def test_quit_exits(self):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertTrue(HBNBCommand().onecmd("quit"))
-    
+
     def test_EOF_exits(self):
-        with patch("sys.stdout"< new=StringIO()) as output:
+        with patch("sys.stdout", new=StringIO()) as output:
             self.assertTrue(HBNBCommand().onecmd("EOF"))
+
 
 class TestHBNBCommand_create(unittest.TestCase):
     """Unittests for testing create from the HBNB command interpreter."""
